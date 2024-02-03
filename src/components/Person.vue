@@ -1,5 +1,6 @@
 <template>
     <div class="person">
+        <!--模板无需xxx.value,自动进行 xxx.value获取数据-->
         <h2>姓名：{{name}}</h2>
         <h2>年龄：{{age}}</h2>
         <h2>地址：{{ address }}</h2>
@@ -26,9 +27,13 @@
     console.log("setup")
     //setup函数中this指向undefined,vue3中弱化this
 
+    //ref 创建：基本类型的响应式数据
+    import {ref} from 'vue'
+
     //数据
-    let name = '张三'//name不是响应式的
-    let age = 18//age不是响应式的
+    //使用ref()包裹数据变为响应式
+    let name = ref('张三')
+    let age = ref(18)
     let tel = '123456789'
     let address='beijing'
     //方法
@@ -39,13 +44,13 @@
     //这样修改页面不改变
     function changeAge(){
         console.log(age)
-        age++
+        age.value++
         console.log(age)
     }
     
     function changeName(){
         console.log(name)
-        name = '李四'
+        name.value = '李四'
         console.log(name)
     }
 </script>
