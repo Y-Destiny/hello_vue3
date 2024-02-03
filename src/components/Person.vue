@@ -6,12 +6,34 @@
         <button @click="changeAge">增加年龄</button>
         <button @click="changeName">修改姓名</button>
     </div>
+    <div>
+        <h1>a:{{ a }}</h1>
+        <h1>c:{{ c }}</h1>
+        <button @click="b">test</button>
+    </div>
 </template>
 
 <script lang="ts">
     export default {
         name: 'Person',
+        beforeCreate(){
+            console.log("beforeCreate")
+        },
+        //data和methods可与setup同时存在
+        //setup生命周期早，data可读取setup数据，setup不可读取data
+        data(){
+            return {
+                a:100,
+                c:this.name
+            }
+        },
+        methods:{
+            b(){
+                console.log('b')
+            }
+        },
         setup(){
+            console.log("setup")
             //setup函数中this指向undefined,vue3中弱化this
 
             //数据
