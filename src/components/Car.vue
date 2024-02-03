@@ -16,12 +16,12 @@
 </template>
 
 <script lang="ts" setup name="Car">
-    import { reactive } from 'vue';
+    import { reactive,ref } from 'vue';
 
     //数据
-    let car =reactive({brand:'奔驰',price:100})
+    let car =ref({brand:'奔驰',price:100})
 
-    let games=reactive([
+    let games=ref([
         {id:'game1',name:'g1'},
         {id:'game2',name:'g2'},
         {id:'game3',name:'g3'}
@@ -37,12 +37,12 @@
 
     function changePrice(){
         console.log(car)
-        car.price+=10
+        car.value.price+=10
         console.log(car)
     }
 
     function changeFristGame(){
-        games[0].name='g4'
+        games.value[0].name='g4'
     }
 
     function changeObj(){
