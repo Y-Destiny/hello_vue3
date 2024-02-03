@@ -37,7 +37,11 @@
                 console.log(name)
             }
 
+            //将数据和方法暴露出去，模板中才可以直接使用
             return {name,age,showTel,changeAge,changeName}
+
+            //return function(){return 'hh'}
+            //return ()=>{return 'hh'}
         }
     }
 </script>
