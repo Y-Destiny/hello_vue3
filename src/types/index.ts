@@ -3,7 +3,8 @@
 export interface PersonInter {
     id:string,
     name:string,
-    age:number
+    age:number,
+    x?:number //？表示可选属性
 }
 
 // 自定义类型
