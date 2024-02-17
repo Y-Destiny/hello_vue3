@@ -1,19 +1,21 @@
 <template>
-    <Person/>
+    <Person ref="person"/>
     <Car/>
+    <button @click="show">显示person</button>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup name="App">
     //js或ts
     import Person from './components/Person.vue'
     import Car from './components/Car.vue'
 
-    export default {
-        name: 'App',//组件名
-        components: {
-            Person,
-            Car
-        }
+
+    import {ref} from 'vue'
+
+    let person=ref()
+
+    function show(){
+        console.log(person.value)
     }
 </script>
 
