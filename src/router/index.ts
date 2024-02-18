@@ -4,9 +4,9 @@
 import { createRouter,createWebHistory } from "vue-router";
 
 // 2. 导入组件
-import Home from '@/components/Home.vue'
-import About from '@/components/About.vue'
-import News from '@/components/News.vue'
+import Home from '@/views/Home.vue'
+import About from '@/views/About.vue'
+import News from '@/views/News.vue'
 
 //创建路由器
 //vue3配置路由要选择工作模式
