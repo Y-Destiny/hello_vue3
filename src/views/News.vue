@@ -3,26 +3,7 @@
         <!--导航-->
         <ul>
             <li v-for="news in newsList" :key="news.id">
-                <!--params第一种-->
-                <!--
-                <RouterLink :to="{path:`/news/detail/${news.id}/${news.title}/${news.content}`}">{{ news.title }}</RouterLink>
-                -->
-                <!--params第二种-->
-                <!--
-                <RouterLink
-                    :to="{
-                        name:'xiangqing',
-                        params:{
-                            id:news.id,
-                            title:news.title,
-                            content:news.content
-                        }
-                    }"
-                >
-                    {{ news.title }}
-                </RouterLink>
-            -->
-                <!--query，对应props配置方法2-->
+                <button @click="showNewsDetail(news)">查看新闻</button>
                 <RouterLink :to="`/news/detail?id=${news.id}&title=${news.title}&content=${news.content}`">{{ news.title }}</RouterLink>
             </li>
         </ul>
@@ -34,6 +15,13 @@
 
 <script setup lang="ts" name="News">
     import { ref } from 'vue';
+    import { useRouter } from 'vue-router';
+
+    interface News{
+        id: string;
+        title: string;
+        content: string;
+    }
 
     const newsList = ref([
         { id: "1", title: '新闻001', content: '新闻001的内容' },
@@ -41,8 +29,20 @@
         { id: "3", title: '新闻003', content: '新闻003的内容' },
         { id: "4", title: '新闻004', content: '新闻004的内容' }
     ]);
+    const router = useRouter();
 
-    
+    function showNewsDetail(news:any) {
+        console.log('查看新闻');
+
+        router.push({
+            name:'xiangqing',
+            query: {
+                id: news.id,
+                title: news.title,
+                content: news.content
+            }
+    });
+    }
 </script>
 
 <style scoped>
