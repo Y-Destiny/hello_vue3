@@ -3,11 +3,12 @@
         <!--导航-->
         <ul>
             <li v-for="news in newsList" :key="news.id">
-                <!--第一种-->
+                <!--params第一种-->
                 <!--
                 <RouterLink :to="{path:`/news/detail/${news.id}/${news.title}/${news.content}`}">{{ news.title }}</RouterLink>
                 -->
-                <!--第二种-->
+                <!--params第二种-->
+                <!--
                 <RouterLink
                     :to="{
                         name:'xiangqing',
@@ -20,6 +21,9 @@
                 >
                     {{ news.title }}
                 </RouterLink>
+            -->
+                <!--query，对应props配置方法2-->
+                <RouterLink :to="`/news/detail?id=${news.id}&title=${news.title}&content=${news.content}`">{{ news.title }}</RouterLink>
             </li>
         </ul>
         <div class="news-content">
