@@ -1,6 +1,6 @@
 <template>
     <div class="count">
-        <h2>当前求和为:{{ sum }}</h2>
+        <h2>当前求和为:{{ sum }},放大10倍{{ bigSum }},缩小10倍{{ smallSum }}</h2>
         <h2>在{{ school }} 学习 {{ subject }}</h2>
         <select v-model.number="n">
             <option value="1">1</option>
@@ -19,7 +19,7 @@ import { storeToRefs } from 'pinia';
 
 
 const countStore = useCountStore();
-const { sum, school, subject } = storeToRefs(countStore);
+const { sum, school, subject, bigSum, smallSum } = storeToRefs(countStore);
 
 let n = ref(1);
 
