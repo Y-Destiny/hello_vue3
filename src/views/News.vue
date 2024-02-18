@@ -1,15 +1,27 @@
 <template>
     <div class="news">
+        <!--导航-->
         <ul>
-            <li><a href="#">新闻001</a></li>
-            <li><a href="#">新闻002</a></li>
-            <li><a href="#">新闻003</a></li>
-            <li><a href="#">新闻004</a></li>
+            <li v-for="news in newsList" :key="news.id">
+                <RouterLink to="/news/detail">{{ news.title }}</RouterLink>
+            </li>
         </ul>
+        <div class="news-content">
+            <router-view></router-view>
+        </div>
     </div>
 </template>
 
 <script setup lang="ts" name="News">
+    import { ref } from 'vue';
+
+    const newsList = ref([
+        { id: "1", title: '新闻001', content: '新闻001的内容' },
+        { id: "2", title: '新闻002', content: '新闻002的内容' },
+        { id: "3", title: '新闻003', content: '新闻003的内容' },
+        { id: "4", title: '新闻004', content: '新闻004的内容' }
+    ]);
+
     
 </script>
 

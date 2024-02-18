@@ -7,6 +7,7 @@ import { createRouter,createWebHistory } from "vue-router";
 import Home from '@/views/Home.vue'
 import About from '@/views/About.vue'
 import News from '@/views/News.vue'
+import Detail from '@/views/Detial.vue'
 
 //创建路由器
 //vue3配置路由要选择工作模式
@@ -27,8 +28,15 @@ const router = createRouter({
         {
             name:"xinwen",
             path: "/news",
-            component: News
-        },
+            component: News,
+            children:[
+                {
+                    name:"xiangqing",
+                    path: "/news/detail",
+                    component: Detail
+                }
+            ]
+        }
     ]
 })
 
