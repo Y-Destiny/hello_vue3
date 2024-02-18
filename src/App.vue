@@ -5,7 +5,7 @@
         <div class="navigate">
             <RouterLink to="/home" active-class="active">首页</RouterLink>
             <RouterLink :to="{path:'/news'}" active-class="active">新闻</RouterLink>
-            <RouterLink to="/about" active-class="active">关于</RouterLink>
+            <RouterLink :to="{name:'guanyu'}" active-class="active">关于</RouterLink>
         </div>
         <div class="main-content">
             <router-view></router-view>

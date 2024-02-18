@@ -15,14 +15,17 @@ const router = createRouter({
     // 配置路由
     routes: [
         {
+            name:"zhuye",
             path: "/home",
             component: Home
         },
         {
+            name:"guanyu",
             path: "/about",
             component: About
         },
         {
+            name:"xinwen",
             path: "/news",
             component: News
         },
