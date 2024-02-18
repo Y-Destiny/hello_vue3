@@ -16,6 +16,12 @@ import { storeToRefs } from 'pinia';
 
 const talkStore = useTalkStore();
 const { talkList } = storeToRefs(talkStore);
+talkStore.$subscribe((mutate,state)=>{
+    console.log('talkStore改变',mutate,state);
+    //浏览器本地存储
+    localStorage.setItem('talkList',JSON.stringify(state.talkList));
+});
+
 
 async function getLoveTalk() {
     console.log('获取');
