@@ -1,0 +1,32 @@
+// 创建一个路由器，并暴露
+
+// 1. 导入 createRouter 方法
+import { createRouter,createWebHistory } from "vue-router";
+
+// 2. 导入组件
+import Home from '@/components/Home.vue'
+import About from '@/components/About.vue'
+import News from '@/components/News.vue'
+
+//创建路由器
+//vue3配置路由要选择工作模式
+const router = createRouter({
+    history: createWebHistory(),
+    // 配置路由
+    routes: [
+        {
+            path: "/home",
+            component: Home
+        },
+        {
+            path: "/about",
+            component: About
+        },
+        {
+            path: "/news",
+            component: News
+        },
+    ]
+})
+
+export default router
