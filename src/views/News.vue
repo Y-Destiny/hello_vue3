@@ -3,11 +3,27 @@
         <!--导航-->
         <ul>
             <li v-for="news in newsList" :key="news.id">
-                <RouterLink to="/news/detail">{{ news.title }}</RouterLink>
+                <!--
+                    写法1:
+                    <RouterLink :to="`/news/detail?id=${news.id}&title=${news.title}&content=${news.content}`">{{ news.title }}</RouterLink>
+                -->
+                <!--写法2:-->
+                <RouterLink 
+                    :to="{
+                        name:'xiangqing',
+                        query:{
+                            id:news.id,
+                            title:news.title,
+                            content:news.content
+                        }
+                    }"
+                >
+                    {{ news.title }}
+                </RouterLink>
             </li>
         </ul>
         <div class="news-content">
-            <router-view></router-view>
+            <RouterView></RouterView>
         </div>
     </div>
 </template>
@@ -35,8 +51,11 @@
     }
     .news ul {
         margin-top: 30px;
-        list-style: none;
+        /*list-style: none;*/
         padding-left: 10px;
+    }
+    .news li::marker{
+        color: #64967E;
     }
     .news li>a {
         font-size: 18px;
