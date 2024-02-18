@@ -41,6 +41,10 @@ const router = createRouter({
                     
                 }
             ]
+        },
+        {
+            path: '/',
+            redirect: '/home'
         }
     ]
 })
