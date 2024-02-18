@@ -17,12 +17,6 @@ import { useTalkStore } from '@/store/loveTalk'
 
 const talkStore = useTalkStore();
 
-let talkList = reactive([
-    { id: "1", content: '今天天气不错1' },
-    { id: "2", content: '今天天气不错2' },
-    { id: "3", content: '今天天气不错3' },
-]);
-
 async function getLoveTalk() {
     console.log('获取');
 

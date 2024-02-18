@@ -1,6 +1,7 @@
 <template>
     <div class="count">
         <h2>当前求和为:{{ countStore.sum }}</h2>
+        <h2>在{{ countStore.school }} 学习 {{ countStore.subject }}</h2>
         <select v-model.number="n">
             <option value="1">1</option>
             <option value="2">2</option>
@@ -26,7 +27,18 @@ console.log(countStore.sum);
 let n = ref(1);
 
 function add() {
-    countStore.sum += n.value;
+    //第一种修改，直接进行修改
+    //countStore.sum += n.value;
+
+    //第二种修改，批量修改
+    /*countStore.$patch({
+        sum:countStore.sum+n.value,
+        school:'北京大学',
+        subject:'计算机'
+    })*/
+
+    //第三种修改,actions
+    countStore.increment(n.value);
 }
 
 function sub() {
