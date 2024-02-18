@@ -3,15 +3,15 @@
         <!--导航-->
         <ul>
             <li v-for="news in newsList" :key="news.id">
+                <!--第一种-->
                 <!--
-                    写法1:
-                    <RouterLink :to="`/news/detail?id=${news.id}&title=${news.title}&content=${news.content}`">{{ news.title }}</RouterLink>
+                <RouterLink :to="{path:`/news/detail/${news.id}/${news.title}/${news.content}`}">{{ news.title }}</RouterLink>
                 -->
-                <!--写法2:-->
-                <RouterLink 
+                <!--第二种-->
+                <RouterLink
                     :to="{
                         name:'xiangqing',
-                        query:{
+                        params:{
                             id:news.id,
                             title:news.title,
                             content:news.content
