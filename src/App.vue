@@ -1,20 +1,15 @@
 <template>
     <div class="app">
-        <h2 class="title">Vue路由</h2>
-        <!--导航-->
-        <div class="navigate">
-            <RouterLink replace to="/home" active-class="active">首页</RouterLink>
-            <RouterLink replace :to="{path:'/news'}" active-class="active">新闻</RouterLink>
-            <RouterLink replace :to="{name:'guanyu'}" active-class="active">关于</RouterLink>
-        </div>
-        <div class="main-content">
-            <router-view></router-view>
-        </div>
+        <h2 class="title"> app 组件</h2>
+        <Count/>
+        <br>
+        <LoveTalk/>
     </div>
 </template>
 
 <script lang="ts" setup name="App">
-
+    import Count from './components/Count.vue';
+    import LoveTalk from './components/LoveTalk.vue';
 </script>
 
 <style scoped>
