@@ -30,15 +30,6 @@ const router = createRouter({
             path: "/news",
             component: News,
             children: [
-                /*{
-                    name: 'xiangqing',
-                    path: 'detail/:id/:title?/:content',
-                    component: Detail,
-                    //写法1，将路由收到的所有params参数作为props传递给组件
-                    props: true
-
-                }*/
-
                 {
                     name: 'xiangqing',
                     path: 'detail',
@@ -48,13 +39,6 @@ const router = createRouter({
                         return route.query
                     }
                     
-                    //写法3，对象写法，自己决定将什么参数传递给组件，数据固定
-                    /*
-                    props: {
-                        id: 1,
-                        title: '默认标题',
-                        content: '默认内容'
-                    }*/
                 }
             ]
         }
