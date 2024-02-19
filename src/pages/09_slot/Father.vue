@@ -2,51 +2,36 @@
   <div class="father">
     <h3>父组件</h3>
     <div class="content">
-      <Category>
-        <template v-slot:s2>
+      <Game>
+        <template #default="{games}">
           <ul>
             <li v-for="game in games" :key="game.id">{{ game.name }}</li>
           </ul>
         </template>
-        <template v-slot:s1>
-          <h2>热门游戏列表</h2>
-        </template>
-      </Category>
+      </Game>
 
-      <Category>
-        <template v-slot:s1>
-          <h2>今日美食城市</h2>
+      <Game>
+        <template v-slot="{games}">
+          <ol>
+            <li v-for="game in games" :key="game.id">{{ game.name }}</li>
+          </ol>
         </template>
-        <template v-slot:s2>
-          <img :src="imgUrl" alt="food" />
+      </Game>
+
+      <Game>
+        <template v-slot="{games}">
+          <h4 v-for="game in games" :key="game.id">{{ game.name }}</h4>
         </template>
-      </Category>
-      <!-- #s1即v-slot:s1简写-->
-      <Category>
-        <template #s1>
-          <h2>今日影视推荐</h2>
-        </template>
-        <template #s2>
-          <video :src="videoUrl" controls></video>
-        </template>
-      </Category>
+      </Game>
     </div>
   </div>
 </template>
 
 <script setup lang="ts" name="Father">
-import Category from './Category.vue'
-import { nanoid } from 'nanoid';
+import Game from './Game.vue'
+
 import { ref } from 'vue';
 
-let games = ref([
-  { id: nanoid(), name: 'LOL' },
-  { id: nanoid(), name: 'DNF' },
-  { id: nanoid(), name: 'CF' }
-])
-
-let imgUrl = ref('https://z1.ax1x.com/2023/11/19/piNxLo4.jpg')
-let videoUrl = ref('https://media.w3.org/2010/05/sintel/trailer.mp4')
 
 </script>
 
@@ -65,5 +50,10 @@ let videoUrl = ref('https://media.w3.org/2010/05/sintel/trailer.mp4')
 img,
 video {
   width: 100%;
+}
+
+h2 {
+    background-color: orange;
+    text-align: center;
 }
 </style>
