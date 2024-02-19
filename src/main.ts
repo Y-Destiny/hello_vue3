@@ -8,6 +8,7 @@ import router from "./router";
 //引入pinia
 import { createPinia } from "pinia";
 
+
 // 创建应用实例并挂载
 const app=createApp(App)
 

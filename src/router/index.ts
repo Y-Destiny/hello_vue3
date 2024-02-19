@@ -1,48 +1,52 @@
-// 创建一个路由器，并暴露
+import { createRouter, createWebHistory } from 'vue-router'
+import Props from '@/pages/01_props/Father.vue'
+import Event from '@/pages/02_custom-event/Father.vue'
+import Bus from '@/pages/03_mitt/Father.vue'
+import Model from '@/pages/04_v-model/Father.vue'
+import AttrsListeners from '@/pages/05_$attrs/Father.vue'
+import RefChildrenParent from '@/pages/06_$refs-$parent/Father.vue'
+import ProvideInject from '@/pages/07_provide-inject/Father.vue'
+import Pinia from '@/pages/08_pinia/Father.vue'
+import Slot from '@/pages/09_slot/Father.vue'
 
-// 1. 导入 createRouter 方法
-import { createRouter, createWebHistory } from "vue-router";
-
-// 2. 导入组件
-import Home from '@/views/Home.vue'
-import About from '@/views/About.vue'
-import News from '@/views/News.vue'
-import Detail from '@/views/Detial.vue'
-
-//创建路由器
-//vue3配置路由要选择工作模式
-const router = createRouter({
-    history: createWebHistory(),
-    // 配置路由
-    routes: [
-        {
-            name: "zhuye",
-            path: "/home",
-            component: Home
-        },
-        {
-            name: "guanyu",
-            path: "/about",
-            component: About
-        },
-        {
-            name: "xinwen",
-            path: "/news",
-            component: News,
-            children: [
-                {
-                    name: 'xiangqing',
-                    path: 'detail',
-                    component: Detail,
-                    //写法2，通过函数决定将路由收到的哪些参数作为props传递给组件
-                    props(route){
-                        return route.query
-                    }
-                    
-                }
-            ]
-        }
-    ]
+export default createRouter({
+	history: createWebHistory(),
+	routes: [
+		{
+			path: '/props',
+			component: Props
+		},
+		{
+			path: '/event',
+			component: Event
+		},
+		{
+			path: '/mitt',
+			component: Bus
+		},
+		{
+			path: '/model',
+			component: Model
+		},
+		{
+			path: '/attrs',
+			component: AttrsListeners
+		},
+		{
+			path: '/ref-parent',
+			component: RefChildrenParent
+		},
+		{
+			path: '/provide-inject',
+			component: ProvideInject
+		},
+		{
+			path: '/pinia',
+			component: Pinia
+		},
+		{
+			path: '/slot',
+			component: Slot
+		},
+	]
 })
-
-export default router
