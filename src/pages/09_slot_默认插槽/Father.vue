@@ -2,7 +2,7 @@
   <div class="father">
     <h3>父组件</h3>
     <div class="content">
-      <Category title="热门游戏列表">
+      <Category title="热门游戏列表" v-slot="">
         <ul>
           <li v-for="g in games" :key="g.id">{{ g.name }}</li>
         </ul>

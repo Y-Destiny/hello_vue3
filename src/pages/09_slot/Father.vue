@@ -2,17 +2,33 @@
   <div class="father">
     <h3>父组件</h3>
     <div class="content">
-      <Category title="game">
-        <ul>
-          <li v-for="game in games" :key="game.id">{{ game.name }}</li>
-        </ul>
+      <Category>
+        <template v-slot:s2>
+          <ul>
+            <li v-for="game in games" :key="game.id">{{ game.name }}</li>
+          </ul>
+        </template>
+        <template v-slot:s1>
+          <h2>热门游戏列表</h2>
+        </template>
       </Category>
 
-      <Category title="food" >
-        <img :src="imgUrl" alt="food" />
+      <Category>
+        <template v-slot:s1>
+          <h2>今日美食城市</h2>
+        </template>
+        <template v-slot:s2>
+          <img :src="imgUrl" alt="food" />
+        </template>
       </Category>
-      <Category title="movie" >
-        <video :src="videoUrl" controls></video>
+      <!-- #s1即v-slot:s1简写-->
+      <Category>
+        <template #s1>
+          <h2>今日影视推荐</h2>
+        </template>
+        <template #s2>
+          <video :src="videoUrl" controls></video>
+        </template>
       </Category>
     </div>
   </div>
