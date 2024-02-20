@@ -1,45 +1,80 @@
 <template>
 	<div class="container-fluid wraper">
-		<h1 class="title">
-			Vue3 组件间通信
-		</h1>
-		<hr>
-		<div class="row">
-			<div class="col-xs-3 col-md-3 col-lg-3 col-xl-3">
-				<!-- 导航区 -->
-				<router-link active-class="active" class="list-group-item" to="/props">1. props</router-link>
-				<router-link active-class="active" class="list-group-item" to="/event">2. 自定义事件</router-link>
-				<router-link active-class="active" class="list-group-item" to="/mitt">3. mitt</router-link>
-				<router-link active-class="active" class="list-group-item" to="/model">4. v-model</router-link>
-				<router-link active-class="active" class="list-group-item" to="/attrs">5. $attrs</router-link>
-				<router-link active-class="active" class="list-group-item" to="/ref-parent">6. <span class="small">$refs、$parent</span></router-link>
-				<router-link active-class="active" class="list-group-item" to="/provide-inject">7. provide、inject</router-link>
-				<router-link active-class="active" class="list-group-item" to="/pinia">8. pinia</router-link>
-				<router-link active-class="active" class="list-group-item" to="/slot">9. slot</router-link>
-			</div>
-			<div class="col-xs-9 col-md-9 col-lg-9 col-xl-9">
-				<div class="panel-body">
-					<!-- 占位一个展示区 -->
-					<router-view></router-view>
-				</div>
-			</div>
-		</div>
+		<h2>求和：{{ sum }}</h2>
+		<h2>姓名：{{ person.name }}</h2>
+		<h2>年龄：{{ person.age }}</h2>
+		<h2>汽车：{{ car.brand }}</h2>
+		<h2>价格：{{ car.price }}</h2>
+		<h2>颜色：{{ car.Options.color }}</h2>
+		<button @click="changeSum">点我sum+1</button>
+		<button @click="changeAge">点我age+1</button>
+		<button @click="changeName">点我改名</button>
+		<button @click="changePerson">点我重置</button>
+		<button @click="changeBrans">修改brand</button>
+		<button @click="changePrice">修改price</button>
+		<button @click="changeColor">修改颜色</button>
+		<button @click="changeCar">修改汽车</button>
 	</div>
 </template>
 
 <script setup lang="ts" name="App">
+import { ref, reactive, shallowReactive, shallowRef } from 'vue'
+
+let sum= shallowRef(0)
+let person = shallowRef({
+	name: 'John111',
+	age: 30
+})
+let car= shallowReactive({
+	brand: 'Benz',
+	price: 1000000,
+	Options: {
+		color: 'red'
+	}
+})
+function changeSum() {
+	sum.value++
+}
+
+function changeAge() {
+	person.value.age++
+}
+
+function changeName() {
+	person.value.name = 'Tom'
+}
+
+function changePerson() {
+	person.value = {
+		name: 'John',
+		age: 25
+	}
+}
+
+function changeBrans() {
+	car.brand = 'Audsasi'
+}
+
+function changePrice() {
+	car.price +=1
+}
+
+function changeColor() {
+	car.Options.color = 'blue'
+}
+
+function changeCar() {
+	Object.assign(car , {
+		brand: 'BMW',
+		price: 3000000,
+		Options: {
+			color: 'black'
+		}
+	})
+}
+
+
 </script>
 
 <style>
-	.wraper .title {
-		padding: 20px;
-		text-align: center;
-		min-width: 610px;
-	}
-	.wraper .small{
-		font-size: 15px;
-	}
-	.wraper .list-group-item {
-		min-width: 230px;
-	}
 </style>
