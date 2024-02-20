@@ -1,40 +1,40 @@
 <template>
 	<div class="container-fluid wraper">
-		<h2>sum：{{ sum }}</h2>
-		<h2>sum2：{{ sum2 }}</h2>
-		<button @click="changeSum">点我sum+1</button>
-		<button @click="changeSum2">点我sum2+1</button>
+		<h2>姓名：{{ person.name }}</h2>
+		<h2>年龄：{{ person.age }}</h2>
 
-		<h2>car.name：{{ car.name }}</h2>
-		<h2>car.options.color：{{ car.options.color }}</h2>
-		<button @click="car.name='宝马'">点我改变car.name</button>
-		<button @click="car.options.color='blue'">点我改变car.options.color</button>
-		<h2>{{ car2 }}</h2>
-		<button @click="car2.name='奥迪'">点我改变car2.name</button>
-		<button @click="car2.options.color='yellow'">点我改变car2.options.color</button>
+		<button @click="person.age++">修改年龄</button>
+		<h2>姓名：{{ person2.name }}</h2>
+		<h2>年龄：{{ person2.age }}</h2>
+
+		<button @click="person2.age++">修改年龄2</button>
+
+		<hr>
+		<h2>城市列表</h2>
+		<ul>
+			<li v-for="city in citys" :key="city.id">{{ city.name }}</li>
+		</ul>
 	</div>
 </template>
 
 <script setup lang="ts" name="App">
-import { ref,reactive, readonly, shallowReadonly } from 'vue'
-
-let sum= ref(0)
-let sum2=readonly(sum)
-
-let car = reactive({name: '奔驰' ,options:{color:'red'}})
-
-let car2 = shallowReadonly(car)
-
-function changeSum() {
-	sum.value++
-}
-
-function changeSum2() {
-	sum2.value++
-}
+import { ref, toRaw, reactive, markRaw } from 'vue'
+//toRaw仅对reactive对象有效
+let person = reactive({ name: 'John', age: 25 })
+console.log(person)
+let person2 = toRaw(person)
+console.log(person2)
 
 
+/* markRaw 使对象永远不会变为响应式*/
+let citys = markRaw([
+	{ id: 'asdda01', name: '北京' },
+	{ id: 'asdda02', name: '上海' },
+	{ id: 'asdda03', name: '天津' },
+	{ id: 'asdda04', name: '重庆' }
+])
+// 根据原始对象citys去创建响应式对象citys2 —— 创建失败，因为citys被markRaw标记了
+let citys2 = reactive(citys)
 </script>
 
-<style>
-</style>
+<style></style>
